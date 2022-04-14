@@ -24,11 +24,15 @@ public class Main {
         operations.put("*", (x, y) -> x * y);
         operations.put("/", (x, y) -> x / y);
 
-        System.out.println("\nВведите математическое выражение:");
-        String input = inputSource.nextLine();
+        System.out.println("\nВведите математическое выражение(exit - выход):");
+        String input = "";
 
         try {
-            System.out.printf("Результат операции = %s\n", calc(input));
+            while (input != "exit") {
+                input = inputSource.nextLine();
+                System.out.printf(calc(input));
+                System.out.println("\nвведите:");
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -136,8 +140,7 @@ class ExpressionData {
 
 class NumberConverter {
 
-    public static @Nullable
-    String integerToRoman(int number) {
+    public static String integerToRoman(int number) {
         if (number > 100 || number <= 0)
             return null;
         StringBuilder result = new StringBuilder();
