@@ -54,8 +54,8 @@ public class Main {
                 int firstOperand = NumberConverter.romanToInteger(expData.getFirstOperand());
                 int secondOperand = NumberConverter.romanToInteger(expData.getSecondOperand());
                 int intResult = operation.calculate(firstOperand, secondOperand);
-                if (intResult < 0)
-                    throw new Exception("В римской системе нет отрицательных чисел!");
+                if (intResult < 0 || intResult == 0)
+                    throw new Exception("В римской системе нет отрицательных чисел и нуля!");
                 result += NumberConverter.integerToRoman(intResult);
             }
 
